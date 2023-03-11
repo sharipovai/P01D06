@@ -3,9 +3,7 @@
 
 void wall(int width);
 
-void view_board(int x_ball, int y_ball, int x_l_rack, int y_l_rack, int x_r_rack, int y_r_rack, int score_l, int score_r) {
-    int width = 80;
-    int height = 25;
+void view_board(int width, int height, int x_ball, int y_ball, int x_l_rack, int y_l_rack, int x_r_rack, int y_r_rack, int score_l, int score_r) {
     printf("\n");
     printf("Score %d:%d\n\n", score_l, score_r);
     for (int line = 0; line <= 25; line++) {
