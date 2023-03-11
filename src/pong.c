@@ -3,6 +3,8 @@
 #include "ball_move.h"
 #include "view.h"
 
+void win_mes(int score_l, int score_r);
+
 int main() {
     int x_ball = 39;
     int y_ball = 14;
@@ -19,7 +21,7 @@ int main() {
     int new_y_l_rack;
     int new_y_r_rack;
 
-    int score_l = 0;
+    int score_l = 20;
     int score_r = 0;
 
     int width = 80;
@@ -73,6 +75,13 @@ int main() {
                 score_l += 1;
             }
         }
+        win_mes(score_l, score_r);
     }
     return 0;
+}
+
+void win_mes(int score_l, int score_r) {
+    printf("\n");
+    if (score_l == 21) printf("Congratulations!!! Left player is win!!!\n");
+    if (score_r == 21) printf("Congratulations!!! Rigth player is win!!!\n");
 }
