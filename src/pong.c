@@ -16,6 +16,9 @@ int main() {
     int rRstep_y = 0;
     int rLstep_y = 0;
 
+    int new_y_l_rack;
+    int new_y_r_rack;
+
     int score_l = 0;
     int score_r = 0;
 
@@ -25,7 +28,7 @@ int main() {
     char command = ' ';
     
     int flag;
-    while (flag != 2) {
+    while (flag != 2 && score_l < 21 && score_r < 21) {
         flag = 1;
         view_board(width, height, x_ball, y_ball, x_l_rack, y_l_rack, x_r_rack, y_r_rack, score_l, score_r);
         scanf("%c", &command);
@@ -46,11 +49,18 @@ int main() {
                 break;
             case 'q':
                 flag = 2;
+                break;
+            default:
+                flag = 0;
                 break; 
         }
         if (flag == 1) {
-            y_l_rack += rLstep_y;
-            y_r_rack += rRstep_y;
+            new_y_l_rack = y_l_rack + rLstep_y;
+            new_y_r_rack = y_r_rack + rRstep_y; 
+            if (new_y_l_rack > 0 && new_y_l_rack + 2 < height)
+                y_l_rack = new_y_l_rack;
+            if (new_y_r_rack > 0 && new_y_r_rack + 2 < height)
+                y_r_rack = new_y_r_rack;
             rLstep_y = 0;
             rRstep_y = 0; 
             move(&x_ball, &y_ball, &bstep_x, &bstep_y, x_l_rack, y_l_rack, x_r_rack, y_r_rack);
