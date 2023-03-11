@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include "add_func.h"
 
 void wall(int width);
-int isRack(int line, int col, int x_l_rack, int y_l_rack, int x_r_rack, int y_r_rack);
 
 void view_board(int x_ball, int y_ball, int x_l_rack, int y_l_rack, int x_r_rack, int y_r_rack, int score_l, int score_r) {
     int width = 80;
@@ -32,13 +32,4 @@ void wall(int width) {
     printf("\n");
 }
 
-int isRack(int line, int col, int x_l_rack, int y_l_rack, int x_r_rack, int y_r_rack) {
-    int res = 0;   
-    if (col == x_l_rack)
-        if (line <= y_l_rack + 2 && line >= y_l_rack)
-            res = 1;
-    if (col == x_r_rack)
-        if (line <= y_r_rack + 2 && line >= y_r_rack)
-            res = 1;
-    return res;
-}
+
