@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "view.h"
 #include "ball_move.h"
+#include "view.h"
 
 int main() {
     int x_ball = 39;
@@ -26,7 +26,7 @@ int main() {
     int height = 25;
 
     char command = ' ';
-    
+
     int flag;
     while (flag != 2 && score_l < 21 && score_r < 21) {
         flag = 1;
@@ -34,7 +34,7 @@ int main() {
         scanf("%c", &command);
         switch (command) {
             case 32:
-                break;          
+                break;
             case 'a':
                 rLstep_y = -1;
                 break;
@@ -52,17 +52,15 @@ int main() {
                 break;
             default:
                 flag = 0;
-                break; 
+                break;
         }
         if (flag == 1) {
             new_y_l_rack = y_l_rack + rLstep_y;
-            new_y_r_rack = y_r_rack + rRstep_y; 
-            if (new_y_l_rack > 0 && new_y_l_rack + 2 < height)
-                y_l_rack = new_y_l_rack;
-            if (new_y_r_rack > 0 && new_y_r_rack + 2 < height)
-                y_r_rack = new_y_r_rack;
+            new_y_r_rack = y_r_rack + rRstep_y;
+            if (new_y_l_rack > 0 && new_y_l_rack + 2 < height) y_l_rack = new_y_l_rack;
+            if (new_y_r_rack > 0 && new_y_r_rack + 2 < height) y_r_rack = new_y_r_rack;
             rLstep_y = 0;
-            rRstep_y = 0; 
+            rRstep_y = 0;
             move(&x_ball, &y_ball, &bstep_x, &bstep_y, x_l_rack, y_l_rack, x_r_rack, y_r_rack);
             if (x_ball == 0) {
                 x_ball = 39;
@@ -74,8 +72,7 @@ int main() {
                 y_ball = 14;
                 score_l += 1;
             }
-
-        } 
+        }
     }
     return 0;
 }
