@@ -20,7 +20,7 @@ int main() {
     int rRstep_y = 0;
     int rLstep_y = 0;
 
-    int score_l = 20;
+    int score_l = 0;
     int score_r = 0;
 
     int width = 80;
@@ -32,7 +32,7 @@ int main() {
         flag = read_com(&rLstep_y, &rRstep_y);
         if (flag == 1) {
             move_rack(&y_l_rack, &y_r_rack, &rLstep_y, &rRstep_y, height); 
-            move_ball(&x_ball, &y_ball, &bstep_x, &bstep_y, x_l_rack, y_l_rack, x_r_rack, y_r_rack);
+            move_ball(&x_ball, &y_ball, &bstep_x, &bstep_y, x_l_rack, y_l_rack, x_r_rack, y_r_rack, height);
             if (x_ball == 0) {
                 x_ball = 39;
                 y_ball = 14;
