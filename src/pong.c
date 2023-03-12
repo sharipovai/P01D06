@@ -6,7 +6,7 @@
 void win_mes(int score_l, int score_r);
 int read_com(int *rLstep_y, int *rRstep_y);
 void move_rack(int *y_l_rack, int *y_r_rack, int *rLstep_y, int *rRstep_y, int height);
-     
+
 int main() {
     int x_ball = 39;
     int y_ball = 14;
@@ -31,7 +31,7 @@ int main() {
         view_board(width, height, x_ball, y_ball, x_l_rack, y_l_rack, x_r_rack, y_r_rack, score_l, score_r);
         flag = read_com(&rLstep_y, &rRstep_y);
         if (flag == 1) {
-            move_rack(&y_l_rack, &y_r_rack, &rLstep_y, &rRstep_y, height); 
+            move_rack(&y_l_rack, &y_r_rack, &rLstep_y, &rRstep_y, height);
             move_ball(&x_ball, &y_ball, &bstep_x, &bstep_y, x_l_rack, y_l_rack, x_r_rack, y_r_rack, height);
             if (x_ball == 0) {
                 x_ball = 39;
@@ -44,8 +44,8 @@ int main() {
                 score_l += 1;
             }
         }
-        win_mes(score_l, score_r);
     }
+    win_mes(score_l, score_r);
     return 0;
 }
 
@@ -62,6 +62,8 @@ int read_com(int *rLstep_y, int *rRstep_y) {
     switch (command) {
         case 32:
             break;
+        case '\n':
+            break;
         case 'a':
             *rLstep_y = -1;
             break;
@@ -74,7 +76,7 @@ int read_com(int *rLstep_y, int *rRstep_y) {
         case 'm':
             *rRstep_y = 1;
             break;
-        case 'q':
+        case 27:
             flag = 2;
             break;
         default:
@@ -90,5 +92,5 @@ void move_rack(int *y_l_rack, int *y_r_rack, int *rLstep_y, int *rRstep_y, int h
     if (new_y_l_rack > 0 && new_y_l_rack + 2 < height) *y_l_rack = new_y_l_rack;
     if (new_y_r_rack > 0 && new_y_r_rack + 2 < height) *y_r_rack = new_y_r_rack;
     *rLstep_y = 0;
-    *rRstep_y = 0;      
+    *rRstep_y = 0;
 }
