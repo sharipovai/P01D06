@@ -4,7 +4,8 @@
 #include "view.h"
 
 void win_mes(int score_l, int score_r);
-
+int read_com(int *rLstep_y, int *rRstep_y);
+   
 int main() {
     int x_ball = 39;
     int y_ball = 14;
@@ -27,35 +28,10 @@ int main() {
     int width = 80;
     int height = 25;
 
-    char command = ' ';
-
     int flag;
     while (flag != 2 && score_l < 21 && score_r < 21) {
-        flag = 1;
         view_board(width, height, x_ball, y_ball, x_l_rack, y_l_rack, x_r_rack, y_r_rack, score_l, score_r);
-        scanf("%c", &command);
-        switch (command) {
-            case 32:
-                break;
-            case 'a':
-                rLstep_y = -1;
-                break;
-            case 'z':
-                rLstep_y = 1;
-                break;
-            case 'k':
-                rRstep_y = -1;
-                break;
-            case 'm':
-                rRstep_y = 1;
-                break;
-            case 'q':
-                flag = 2;
-                break;
-            default:
-                flag = 0;
-                break;
-        }
+        flag = read_com(&rLstep_y, &rRstep_y);
         if (flag == 1) {
             new_y_l_rack = y_l_rack + rLstep_y;
             new_y_r_rack = y_r_rack + rRstep_y;
@@ -84,4 +60,33 @@ void win_mes(int score_l, int score_r) {
     printf("\n");
     if (score_l == 21) printf("Congratulations!!! Left player is win!!!\n");
     if (score_r == 21) printf("Congratulations!!! Rigth player is win!!!\n");
+}
+
+int read_com(int *rLstep_y, int *rRstep_y) {
+    char command = ' ';
+    int flag = 1;
+    scanf("%c", &command);
+    switch (command) {
+        case 32:
+            break;
+        case 'a':
+            *rLstep_y = -1;
+            break;
+        case 'z':
+            *rLstep_y = 1;
+            break;
+        case 'k':
+            *rRstep_y = -1;
+            break;
+        case 'm':
+            *rRstep_y = 1;
+            break;
+        case 'q':
+            flag = 2;
+            break;
+        default:
+            flag = 0;
+            break;
+    }
+    return flag;
 }
