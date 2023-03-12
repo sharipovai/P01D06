@@ -26,7 +26,7 @@ int main() {
     int width = 80;
     int height = 25;
 
-    int flag;
+    int flag = 0;
     while (flag != 2 && score_l < 21 && score_r < 21) {
         view_board(width, height, x_ball, y_ball, x_l_rack, y_l_rack, x_r_rack, y_r_rack, score_l, score_r);
         flag = read_com(&rLstep_y, &rRstep_y);
